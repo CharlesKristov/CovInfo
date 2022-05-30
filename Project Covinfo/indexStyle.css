@@ -1,0 +1,90 @@
+@import url();
+.imgFilter{
+    filter: brightness(0.85);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80x;
+    background-color: #e3e6f369;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    top: 0;
+    left: 0;
+    position: sticky;
+}
+.navbar {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+#navbarCustom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbarCustom li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#navbarCustom li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    color: #139c81;
+    transition: 0.3s ease;
+}
+#navbarCustom li a:hover,
+#navbarCustom li a.active{
+    color: #6dc9b7;
+}
+#navbarCustom li a.active::after,
+#navbarCustom li a:hover::after{
+    content: "";
+    width: 35%;
+    height: 4px;
+    background-color: #6dc9b7;
+    position: absolute;
+    bottom: -1px;
+    left: 30px;
+}
+#hero {
+    background-image: url("Asset-code/PNG/Gambar Header.png");
+    background-color: white;
+    background-size:auto;
+    background-repeat: no-repeat;
+    height: 95vh;
+    width: 100%;
+    background-position: top 65% right 0;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+#hero h4 {
+    padding-bottom: 35px;
+    font-weight: 600;
+}
+#hero h1 {
+    color: #00b4d8;
+    padding-bottom: 65px;
+    font-weight: 700;
+}
+#hero a{
+    text-decoration: none;
+    border-radius: 20px;
+    background-color: #139c81;
+    border: 0;
+    padding: 12px 50px;
+    color: white;
+    transition: 0.3s ease;
+    cursor: pointer;
+    font-weight: 700;
+}
+#hero a:hover
+{
+    background-color: #6dc9b7;
+}
+
+
