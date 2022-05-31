@@ -1,6 +1,6 @@
 //GLOBAL
 var products=[];
-var carItems=[];
+var cartItems=[];
 var cart_n = document.getElementById('cart_n');
 // DIVS
 var hotSalesDIV = document.getElementById("hotSalesDIV");
@@ -24,7 +24,6 @@ var COVID19MED = [
     {name: 'Ivermectin', price:130000}, 
     {name: 'Ivermectin 2', price:130000}, 
     {name: 'Ivermectin 3', price:130000}, 
-    {name: 'Ivermectin', price:130000}
 ];
 //HTML
 function HTMLhotSalesProduct(con) {
@@ -89,11 +88,92 @@ function HTMLbookAmbulanceProduct(con) {
     `
 }
 
+function HTMLcovidMedicineProduct(con) {
+    let URL = `Asset-code/covidMedicineAsset/Med${con}.jpg`;
+    let btn = `btnMed${con}`;
+    return `
+        <div class ="col-md-4">
+            <div class = "card mb-4 shadow-sm">
+                <img class="card-img-top" style="height:16rem;" src="${URL}"    
+                alt = "Card image cap">  
+                <div class="card-body box-shadow-15">
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <p class="card-text">Name: ${COVID19MED[con-1].name}</p>
+                    <p class="card-text">Price: Rp. ${COVID19MED[con-1].price},00</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type-"button" onclick="cart2('${COVID19MED[con-1].name}', '${COVID19MED[con-1].price}', '${URL}', '${con}', '${btn}')"
+                            class="btn btn-sm btn-outline-secondary" >Buy</button>
+                            
+                            <button id="${btn}" type-"button" onclick="cart('${COVID19MED[con-1].name}', '${COVID19MED[con-1].price}', '${URL}', '${con}', '${btn}')"
+                            class="btn btn-sm btn-outline-secondary" >Add to cart</button>
+                        </div>
+                        <small class="text-muted">Free shipping</small>
+                    </div> 
+                </div>  
+            </div>
+        </div>
+    `
+}
+
+//ANIMATION
+function animation(){
+    const toast=swal.mixin({
+        toast:true,
+        position:'top-end',
+        showConfirmButton:false,
+        timer:1000
+    });
+        toast({
+            type:'success',
+            title:'Added to shopping cart'
+    });
+}
+
+// CART FUNCTIONS
+function cart(name,price,url,con,btncart){
+    var item={
+        name:name,
+        price:price,
+        url:`'${url}'`
+    }
+    cartItems.push(item);
+    let storage=JSON.parse(localStorage.getItem("cart"));
+    if(storage == null){
+            products.push(item);
+            localStorage.setItem("cart",JSON.stringify(products));
+    }else{
+        products=JSON.parse(localStorage.getItem("cart"));
+        cart_n.innerHTML=`[${products.length}]`;
+        document.getElementById(btncart).style.display="none";
+        animation();
+    }
+}
 //RENDER
+
+
 function render() {
     for (let index = 1; index <= 6 ; index++) {
         hotSalesDIV.innerHTML+=`${HTMLhotSalesProduct(index)}`;
     }
+    
+    for (let index = 1; index <= 3 ; index++) {
+        bookingAmbulanceDIV.innerHTML+=`${HTMLbookAmbulanceProduct(index)}`;
+        covid19MedDIV.innerHTML+=`${HTMLcovidMedicineProduct(index)}`;
+    }
+
+    if(localStorage.getItem("cart")== null){
+    }
+    else
+    {
+        products=JSON.parse(localStorage.getItem("cart"));
+        cart_n.innerHTML=`[${products.length}]`;
+    }
+
 }
 
 //di elliot 1:31:24
+// di cc 1:58:07
