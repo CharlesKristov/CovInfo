@@ -58,36 +58,36 @@ function HTMLhotSalesProduct(con) {
     `
 }
 
-// function HTMLhotSalesProduct(con) {
-//     let URL = `Asset-code/bookAmbulanceAsset/RS${con}.jpg`;
-//     let btn = `btnRS${con}`;
-//     return `
-//         <div class ="col-md-4">
-//             <div class = "card mb-4 shadow-sm">
-//                 <img class="card-img-top" style="height:16rem;" src="${URL}"    
-//                 alt = "Card image cap">  
-//                 <div class="card-body box-shadow-15">
-//                     <i style = "color:orange;" class="fa fa-star"></i>
-//                     <i style = "color:orange;" class="fa fa-star"></i>
-//                     <i style = "color:orange;" class="fa fa-star"></i>
-//                     <i style = "color:orange;" class="fa fa-star"></i>
-//                     <p class="card-text">Name: ${RS[con-1].name}</p>
-//                     <p class="card-text">Price: Rp. ${RS[con-1].price},00</p>
-//                     <div class="d-flex justify-content-between align-items-center">
-//                         <div class="btn-group">
-//                             <button type-"button" onclick="cart2('${RS[con-1].name}', '${RS[con-1].price}', '${URL}', '${con}', '${btn}')"
-//                             class="btn btn-sm btn-outline-secondary" >Buy</button>
+function HTMLbookAmbulanceProduct(con) {
+    let URL = `Asset-code/bookAmbulanceAsset/RS${con}.jpg`;
+    let btn = `btnRS${con}`;
+    return `
+        <div class ="col-md-4">
+            <div class = "card mb-4 shadow-sm">
+                <img class="card-img-top" style="height:16rem;" src="${URL}"    
+                alt = "Card image cap">  
+                <div class="card-body box-shadow-15">
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <i style = "color:orange;" class="fa fa-star"></i>
+                    <p class="card-text">Name: ${BOOKINGAMBULANCE[con-1].name}</p>
+                    <p class="card-text">Price: Rp. ${BOOKINGAMBULANCE[con-1].price},00</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type-"button" onclick="cart2('${BOOKINGAMBULANCE[con-1].name}', '${BOOKINGAMBULANCE[con-1].price}', '${URL}', '${con}', '${btn}')"
+                            class="btn btn-sm btn-outline-secondary" >Buy</button>
                             
-//                             <button id="${btn}" type-"button" onclick="cart('${RS[con-1].name}', '${RS[con-1].price}', '${URL}', '${con}', '${btn}')"
-//                             class="btn btn-sm btn-outline-secondary" >Add to cart</button>
-//                         </div>
-//                         <small class="text-muted">Free shipping</small>
-//                     </div> 
-//                 </div>  
-//             </div>
-//         </div>
-//     `
-// }
+                            <button id="${btn}" type-"button" onclick="cart('${BOOKINGAMBULANCE[con-1].name}', '${BOOKINGAMBULANCE[con-1].price}', '${URL}', '${con}', '${btn}')"
+                            class="btn btn-sm btn-outline-secondary" >Add to cart</button>
+                        </div>
+                        <small class="text-muted">Free shipping</small>
+                    </div> 
+                </div>  
+            </div>
+        </div>
+    `
+}
 
 //RENDER
 function render() {
