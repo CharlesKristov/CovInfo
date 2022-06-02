@@ -44,7 +44,7 @@ function HTMLhotSalesProduct(con) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type-"button" onclick="cart2('${HOTSALES[con-1].name}', '${HOTSALES[con-1].price}', '${URL}', '${con}', '${btn}')"
-                            class="btn btn-sm btn-outline-secondary" >Buy</button>
+                            class="btn btn-sm btn-outline-secondary" ><a href="cart.html" style="color: inherit;" >Buy</a></button>
                             
                             <button id="${btn}" type-"button" onclick="cart('${HOTSALES[con-1].name}', '${HOTSALES[con-1].price}', '${URL}', '${con}', '${btn}')"
                             class="btn btn-sm btn-outline-secondary" >Add to cart</button>
@@ -75,7 +75,7 @@ function HTMLbookAmbulanceProduct(con) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type-"button" onclick="cart2('${BOOKINGAMBULANCE[con-1].name}', '${BOOKINGAMBULANCE[con-1].price}', '${URL}', '${con}', '${btn}')"
-                            class="btn btn-sm btn-outline-secondary" >Buy</button>
+                            class="btn btn-sm btn-outline-secondary" ><a href="cart.html" style="color: inherit;" >Buy</a></button>
                             
                             <button id="${btn}" type-"button" onclick="cart('${BOOKINGAMBULANCE[con-1].name}', '${BOOKINGAMBULANCE[con-1].price}', '${URL}', '${con}', '${btn}')"
                             class="btn btn-sm btn-outline-secondary" >Add to cart</button>
@@ -106,7 +106,7 @@ function HTMLcovidMedicineProduct(con) {
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type-"button" onclick="cart2('${COVID19MED[con-1].name}', '${COVID19MED[con-1].price}', '${URL}', '${con}', '${btn}')"
-                            class="btn btn-sm btn-outline-secondary" >Buy</button>
+                            class="btn btn-sm btn-outline-secondary"><a href="cart.html" style="color: inherit;" >Buy</a></button>
                             
                             <button id="${btn}" type-"button" onclick="cart('${COVID19MED[con-1].name}', '${COVID19MED[con-1].price}', '${URL}', '${con}', '${btn}')"
                             class="btn btn-sm btn-outline-secondary" >Add to cart</button>
@@ -120,17 +120,32 @@ function HTMLcovidMedicineProduct(con) {
 }
 
 //ANIMATION
+
+
+
+
+var toastMixin = Swal.mixin({
+    toast: true,
+    icon: 'success',
+    title: 'General Title',
+    animation: false,
+    position: 'top-right',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
+
 function animation(){
-    const toast=swal.mixin({
-        toast:true,
-        position:'top-end',
-        showConfirmButton:false,
-        timer:1000
+   
+    toastMixin.fire({
+        title: 'Added to shopping cart',
+        icon: 'success'
     });
-        toast({
-            type:'success',
-            title:'Added to shopping cart'
-    });
+    
 }
 
 // CART FUNCTIONS
@@ -138,7 +153,7 @@ function cart(name,price,url,con,btncart){
     var item={
         name:name,
         price:price,
-        url:`'${url}'`
+        url:url
     }
     cartItems.push(item);
     let storage=JSON.parse(localStorage.getItem("cart"));
@@ -147,11 +162,36 @@ function cart(name,price,url,con,btncart){
             localStorage.setItem("cart",JSON.stringify(products));
     }else{
         products=JSON.parse(localStorage.getItem("cart"));
-        cart_n.innerHTML=`[${products.length}]`;
-        document.getElementById(btncart).style.display="none";
-        animation();
+        products.push(item);
+        localStorage.setItem("cart", JSON.stringify(products));
     }
+    products=JSON.parse(localStorage.getItem("cart"));
+    cart_n.innerHTML=`[${products.length}]`;
+    document.getElementById(btncart).style.display="none";
+    animation();
 }
+
+function cart2(name, price,url,con,btncart){
+    var item={
+        name:name,
+        price:price,
+        url:url
+    }
+    cartItems.push(item);
+    let storage=JSON.parse(localStorage.getItem("cart"));
+    if(storage == null){
+        products.push(item);
+        localStorage.setItem("cart",JSON.stringify(products));
+    }else{
+        products=JSON.parse(localStorage.getItem("cart"));
+        products.push(item);
+        localStorage.setItem("cart", JSON.stringify(products));
+    }
+    products=JSON.parse(localStorage.getItem("cart"));
+    cart_n.innerHTML=`[${products.length}]`;
+    document.getElementById(btncart).style.display="none";
+}
+
 //RENDER
 
 
@@ -177,3 +217,4 @@ function render() {
 
 //di elliot 1:31:24
 // di cc 1:58:07
+//di cc 2:13:58
