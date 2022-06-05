@@ -13,13 +13,71 @@ Penggantian nama id atau class:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covinfo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
+  </head>
 <body onload = "render()">
 
-    
-   
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light p-3 font-weight-bold">
+      <a class="navbar-brand" href="#">
+          <img class="fab fa-pagelines" src="Asset-code/PNG/Logo Covinfo.png" width="170" height="80" alt="Covinfo logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
 
-    
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto menu" id="navbarCustom"> 
+              <li class="nav-item">
+                  <a class="nav-link active" href="./index.html">Home</a>
+              </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0" id="iconCustom">
+              <a class="text-dark nav-link" href="cart.html">
+                  <i class="text-warning fas fa-shopping-cart"></i> Your Cart
+                  <!-- 13:16 -->
+                  <i style="color: yellow; " id="cart_n"></i>
+              </a>
+              <a class="nav-link disabled text-dark" href="login.html">
+                  <i class="far fa-user"></i> Admin
+              </a>
+          </form>
+      </div>
+  </nav>
+  </header>
+  <div class="container mt-3">
+    <main role="main">
+      <div class="row">
+        <div class="col">
+          <div class="table-responsive-sm">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody id="table">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+    </main>
+  </div>
+  <footer class="container">
+    <p class="float-right">
+        <a href="#">TOP</a>
+    </p>
+    <div class="row">
+        Covinfo - Group 22 (SE ASIK)
+    </div>
+  </footer> 
+ 
 
     
 </body>
@@ -56,5 +114,5 @@ Penggantian nama id atau class:
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="main.js"></script>
+<script src="cart.js"></script>
 <script src="https://kit.fontawesome.com/598177a05d.js" crossorigin="anonymous"></script>
