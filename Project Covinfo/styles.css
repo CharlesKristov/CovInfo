@@ -1,0 +1,17 @@
+form {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 30px;
+}
+body {
+    background-image: url('Asset-code/PNG/background2.jpg');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-size: cover;
+    scroll-behavior: smooth;
+}
